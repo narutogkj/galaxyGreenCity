@@ -2,8 +2,11 @@ import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
+import Inquiry from '../screens/Inquiry';
+import About from '../screens/About';
 import { COLORS, icons } from "../constants";
 import Svg, { Path } from 'react-native-svg';
+import Agent from '../screens/Agent';
 
 
 
@@ -88,12 +91,56 @@ const Tabs = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.cutlery}
+                            source={icons.nearby}
                             resizeMode="contain"
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? COLORS.primary : COLORS.secondary
+                                tintColor: focused ? COLORS.primary : COLORS.black
+                            }}
+                        />
+                    ),
+                    tabBarButton: (props) => (
+                        <TabBarCustomButton
+                            {...props}
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="User"
+                component={About}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Image
+                            source={icons.user}
+                            resizeMode="contain"
+                            style={{
+                                width: 25,
+                                height: 25,
+                                tintColor: focused ? COLORS.primary : COLORS.black
+                            }}
+                        />
+                    ),
+                    tabBarButton: (props) => (
+                        <TabBarCustomButton
+                            {...props}
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="Agent"
+                component={Agent}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Image
+                            source={icons.basket}
+                            resizeMode="contain"
+                            style={{
+                                width: 25,
+                                height: 25,
+                                tintColor: focused ? COLORS.primary : COLORS.black
                             }}
                         />
                     ),
@@ -107,16 +154,16 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Search"
-                component={HomeScreen}
+                component={Inquiry}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.search}
+                            source={icons.star}
                             resizeMode="contain"
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? COLORS.primary : COLORS.secondary
+                                tintColor: focused ? COLORS.primary : COLORS.black
                             }}
                         />
                     ),
@@ -128,51 +175,7 @@ const Tabs = () => {
                 }}
             />
 
-            <Tab.Screen
-                name="Like"
-                component={HomeScreen}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.like}
-                            resizeMode="contain"
-                            style={{
-                                width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.primary : COLORS.secondary
-                            }}
-                        />
-                    ),
-                    tabBarButton: (props) => (
-                        <TabBarCustomButton
-                            {...props}
-                        />
-                    )
-                }}
-            />
 
-            <Tab.Screen
-                name="User"
-                component={HomeScreen}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.user}
-                            resizeMode="contain"
-                            style={{
-                                width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.primary : COLORS.secondary
-                            }}
-                        />
-                    ),
-                    tabBarButton: (props) => (
-                        <TabBarCustomButton
-                            {...props}
-                        />
-                    )
-                }}
-            />
         </Tab.Navigator>
     )
 }

@@ -6,14 +6,18 @@ import {
     Image,
     SafeAreaView,
     Dimensions,
-    TouchableOpacity
+    TouchableOpacity,
+    FlatList,
+    Modal,
+    TouchableWithoutFeedback
 } from "react-native";
 import { COLORS, icons, images, SIZES, FONTS } from "../constants";
-import Animated, { Clock, clockRunning, Easing, startClock, stopClock, timing, debug, interpolate, Extrapolate, concat } from 'react-native-reanimated';
+import Animated, { Clock, clockRunning, Easing, startClock, stopClock, timing, debug, interpolate, Extrapolate, concat, color } from 'react-native-reanimated';
 import { TopGestureHandler, State, TapGestureHandler, TextInput } from 'react-native-gesture-handler';
-
+import { clients } from '../Data';
 const { width, height } = Dimensions.get('window')
 const { Value, event, block, cond, eq, set } = Animated;
+
 
 function runTiming(clock, value, dest) {
     const state = {
@@ -112,7 +116,82 @@ class LogIn extends Component {
             outputRange: [180, 360],
             extrapolate: Extrapolate.CLAMP
         })
+
+
+        this.state = {
+            seletedClient: null,
+            modalVisible: false
+        }
     }
+    renderClient = ({ item }) => {
+        return (
+            <TouchableOpacity
+                style={{
+                    padding: SIZES.padding,
+                    flexDirection: 'row',
+                    borderBottomWidth: 1,
+                    borderBottomColor: '#2e71dc'
+                }}
+                onPress={() => {
+
+                    this.setState({ modalVisible: false, seletedClient: item })
+                }}
+            >
+
+
+                <Image
+                    source={item.icon}
+                    style={{
+                        width: 30,
+                        height: 30,
+                        marginRight: 10
+                    }}
+                />
+                <Text style={{ ...FONTS.body4 }}>{item.name}</Text>
+            </TouchableOpacity>
+        )
+    }
+    renderClientsListModal = () => {
+
+        return (
+            <Modal
+                animationType='slide'
+                transparent={true}
+                visible={this.state.modalVisible}
+            >
+                <TouchableWithoutFeedback
+                    onPress={() => this.setState({ modalVisible: false })}
+                >
+                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                        <View style={{
+                            height: 500,
+                            width: SIZES.width * 0.8,
+                            backgroundColor: COLORS.lightGray3,
+                            borderColor: '#2e71dc',
+                            borderRadius: SIZES.radius,
+                            borderWidth: 1
+
+                        }}>
+                            <FlatList
+                                data={clients}
+                                renderItem={this.renderClient}
+                                keyExtractor={(item) => item.name}
+                                showsVerticalScrollIndicator={false}
+                                style={{
+                                    padding: SIZES.padding * 2,
+                                    marginBottom: SIZES.padding * 2
+
+                                }}
+                            />
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+
+            </Modal>
+        )
+    }
+
+
     render() {
         return (
             <View style={{
@@ -123,7 +202,22 @@ class LogIn extends Component {
                         { translateY: this.bgY }
                     ]
                 }}>
-
+                    <View>
+                        <Text
+                            style={{
+                                alignContent: 'center',
+                                fontSize: 25,
+                                marginTop: 55,
+                                color: COLORS.white,
+                                borderRadius: 10,
+                                borderWidth: 1,
+                                padding: 5,
+                                borderColor: COLORS.blue,
+                                fontWeight: 'bold',
+                                backgroundColor: COLORS.primary
+                            }}
+                        >Galaxy Green City</Text>
+                    </View>
                     <Image
                         source={images.bg}
                         resizeMode='contain'
@@ -148,38 +242,73 @@ class LogIn extends Component {
                         height: height / 2,
                         ...StyleSheet.absoluteFill,
                         top: null,
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        borderWidth: 1,
+                        borderColor: COLORS.primary
                     }}>
                         <TapGestureHandler onHandlerStateChange={this.onCloseState}>
                             <Animated.View style={styles.closeButton}>
                                 <Animated.Text style={{
-                                    fontSize: 15, transform: [{
+                                    fontSize: 15,
+                                    transform: [{
                                         rotate: concat(this.rotateCross, 'deg')
                                     }]
+
                                 }}>
                                     X
                                 </Animated.Text>
                             </Animated.View>
                         </TapGestureHandler>
                         <TextInput
-                            placeholder="EMAIL"
+                            placeholder="Your Name"
                             style={styles.textInput}
                             placeholderTextColor="black"
                         />
                         <TextInput
-                            placeholder="PASSWORD"
+                            placeholder="Email Id"
                             style={styles.textInput}
                             placeholderTextColor="black"
                         />
+                        <TextInput
+                            placeholder="Phone No."
+                            style={styles.textInput}
+                            placeholderTextColor="black"
+                        />
+
+                        <TouchableOpacity
+                            onPress={() => this.setState({ modalVisible: true })}
+                        >
+                            <View style={styles.textInput}>
+                                <Text style={{
+                                    marginVertical: 10,
+                                }}>
+                                    {(this.state.seletedClient) ? this.state.seletedClient.name : "Client Name"}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+
                         <TouchableOpacity
                             onPress={() => this.props.navigation.navigate("Tabs")}
                         >
-                            <Animated.View style={styles.button}>
-                                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#2E71DC' }}>Register</Text>
+                            <Animated.View style={{
+                                ...styles.button,
+                                borderWidth: 1,
+                                borderColor: COLORS.blue
+                            }}>
+                                <Text style={{
+                                    fontSize: 20,
+                                    fontWeight: 'bold',
+                                    color: COLORS.blue,
+                                }}
+                                >
+                                    Register
+                                </Text>
                             </Animated.View>
                         </TouchableOpacity>
                     </Animated.View>
                 </View>
+                {this.renderClientsListModal()}
+
             </View>
         )
     }
@@ -200,7 +329,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',
-        marginVertical: 5,
+        marginVertical: 10,
         shadowOffset: { width: 2, height: 2 },
         shadowColor: 'black',
         shadowOpacity: 0.2

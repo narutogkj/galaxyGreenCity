@@ -71,251 +71,335 @@ const expensive = 3
 const restaurantData = [
     {
         id: 1,
-        name: "ByProgrammers Burger",
+        name: "Sai Suraksha – Nagar Amausi Station Code",
         rating: 4.8,
-        categories: [5, 7],
         priceRating: affordable,
-        photo: images.burger_restaurant_1,
-        duration: "30 - 45 min",
-        location: {
-            latitude: 1.5347282806345879,
-            longitude: 110.35632207358996,
-        },
-        courier: {
-            avatar: images.avatar_1,
-            name: "Amy"
-        },
+        photo: images.NagarAmausiStationCode1,
+        duration: "9,000/-",
+        plotSize: "1500 Sq. Ft",
         menu: [
             {
                 menuId: 1,
-                name: "Crispy Chicken Burger",
-                photo: images.crispy_chicken_burger,
-                description: "Burger with crispy chicken, cheese and lettuce",
+                name: "Sai Suraksha – Nagar Amausi Station Code",
+                photo: images.NagarAmausiStationCode1,
+                description: "Sai Suraksha – Nagar Amausi Station Code",
                 calories: 200,
-                price: 10
+                price: "9,000/-"
             },
             {
                 menuId: 2,
-                name: "Crispy Chicken Burger with Honey Mustard",
-                photo: images.honey_mustard_chicken_burger,
-                description: "Crispy Chicken Burger with Honey Mustard Coleslaw",
-                calories: 250,
-                price: 15
+                name: "Sai Suraksha – Nagar Amausi Station Code",
+                photo: images.NagarAmausiStationCode2,
+                description: "Sai Suraksha – Nagar Amausi Station Code",
+                calories: 200,
+                price: "9,000/-"
             },
             {
                 menuId: 3,
-                name: "Crispy Baked French Fries",
-                photo: images.baked_fries,
-                description: "Crispy Baked French Fries",
-                calories: 194,
-                price: 8
-            }
-        ]
-    },
-    {
-        id: 2,
-        name: "ByProgrammers Pizza",
-        rating: 4.8,
-        categories: [2, 4, 6],
-        priceRating: expensive,
-        photo: images.pizza_restaurant,
-        duration: "15 - 20 min",
-        location: {
-            latitude: 1.556306570595712,
-            longitude: 110.35504616746915,
-        },
-        courier: {
-            avatar: images.avatar_2,
-            name: "Jackson"
-        },
-        menu: [
+                name: "Sai Suraksha – Nagar Amausi Station Code",
+                photo: images.NagarAmausiStationCode3,
+                description: "Sai Suraksha – Nagar Amausi Station Code",
+                calories: 200,
+                price: "9,000/-"
+            },
             {
                 menuId: 4,
-                name: "Hawaiian Pizza",
-                photo: images.hawaiian_pizza,
-                description: "Canadian bacon, homemade pizza crust, pizza sauce",
-                calories: 250,
-                price: 15
+                name: "Sai Suraksha – Nagar Amausi Station Code",
+                photo: images.NagarAmausiStationCode4,
+                description: "Sai Suraksha – Nagar Amausi Station Code",
+                calories: 200,
+                price: "9,000/-"
+            },
+        ]
+    },
+
+    {
+        id: 2,
+        name: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+        rating: 4.8,
+        priceRating: affordable,
+        photo: images.NagarAmausiStationCode2,
+        duration: "10,800/-",
+        plotSize: "1800 Sq. Ft.",
+        menu: [
+            {
+                menuId: 1,
+                name: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+                photo: images.NagarAmausiStationCode1,
+                description: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+                calories: 200,
+                price: "10,800/-"
             },
             {
-                menuId: 5,
-                name: "Tomato & Basil Pizza",
-                photo: images.pizza,
-                description: "Fresh tomatoes, aromatic basil pesto and melted bocconcini",
-                calories: 250,
-                price: 20
+                menuId: 2,
+                name: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+                photo: images.NagarAmausiStationCode2,
+                description: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+                calories: 200,
+                price: "10,800/-"
             },
             {
-                menuId: 6,
-                name: "Tomato Pasta",
-                photo: images.tomato_pasta,
-                description: "Pasta with fresh tomatoes",
-                calories: 100,
-                price: 10
+                menuId: 3,
+                name: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+                photo: images.NagarAmausiStationCode3,
+                description: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+                calories: 200,
+                price: "10,800/-"
             },
             {
-                menuId: 7,
-                name: "Mediterranean Chopped Salad ",
-                photo: images.salad,
-                description: "Finely chopped lettuce, tomatoes, cucumbers",
-                calories: 100,
-                price: 10
-            }
+                menuId: 4,
+                name: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+                photo: images.NagarAmausiStationCode4,
+                description: "Sai Suraksha Nagar – Amausi Station & TSM Hospital",
+                calories: 200,
+                price: "10,800/-"
+            },
         ]
     },
     {
         id: 3,
-        name: "ByProgrammers Hotdogs",
+        name: "Sai Surksha – Nagar Basant Khera",
         rating: 4.8,
-        categories: [3],
-        priceRating: expensive,
-        photo: images.hot_dog_restaurant,
-        duration: "20 - 25 min",
-        location: {
-            latitude: 1.5238753474714375,
-            longitude: 110.34261833833622,
-        },
-        courier: {
-            avatar: images.avatar_3,
-            name: "James"
-        },
+        priceRating: affordable,
+        photo: images.NagarAmausiStationCode3,
+        duration: "6,000/-",
+        plotSize: "1000 Sq. Ft.",
         menu: [
             {
-                menuId: 8,
-                name: "Chicago Style Hot Dog",
-                photo: images.chicago_hot_dog,
-                description: "Fresh tomatoes, all beef hot dogs",
-                calories: 100,
-                price: 20
-            }
+                menuId: 1,
+                name: "Sai Surksha – Nagar Basant Khera",
+                photo: images.NagarAmausiStationCode1,
+                description: "Sai Surksha – Nagar Basant Khera",
+                calories: 200,
+                price: "6,000/-"
+            },
+            {
+                menuId: 2,
+                name: "Sai Surksha – Nagar Basant Khera",
+                photo: images.NagarAmausiStationCode2,
+                description: "Sai Surksha – Nagar Basant Khera",
+                calories: 200,
+                price: "6,000/-"
+            },
+            {
+                menuId: 3,
+                name: "Sai Surksha – Nagar Basant Khera",
+                photo: images.NagarAmausiStationCode3,
+                description: "Sai Surksha – Nagar Basant Khera",
+                calories: 200,
+                price: "6,000/-"
+            },
+            {
+                menuId: 4,
+                name: "Sai Surksha – Nagar Basant Khera",
+                photo: images.NagarAmausiStationCode4,
+                description: "Sai Surksha – Nagar Basant Khera",
+                calories: 200,
+                price: "6,000/-"
+            },
         ]
     },
     {
         id: 4,
-        name: "ByProgrammers Sushi",
+        name: "Sai Surksha Nagar – Outer Ring Road Behta",
         rating: 4.8,
-        categories: [8],
-        priceRating: expensive,
-        photo: images.japanese_restaurant,
-        duration: "10 - 15 min",
-        location: {
-            latitude: 1.5578068150528928,
-            longitude: 110.35482523764315,
-        },
-        courier: {
-            avatar: images.avatar_4,
-            name: "Ahmad"
-        },
-        menu: [
-            {
-                menuId: 9,
-                name: "Sushi sets",
-                photo: images.sushi,
-                description: "Fresh salmon, sushi rice, fresh juicy avocado",
-                calories: 100,
-                price: 50
-            }
-        ]
-    },
-    {
-        id: 5,
-        name: "ByProgrammers Cuisine",
-        rating: 4.8,
-        categories: [1, 2],
         priceRating: affordable,
-        photo: images.noodle_shop,
-        duration: "15 - 20 min",
-        location: {
-            latitude: 1.558050496260768,
-            longitude: 110.34743759630511,
-        },
-        courier: {
-            avatar: images.avatar_4,
-            name: "Muthu"
-        },
+        photo: images.NagarAmausiStationCode4,
+        duration: "12,000/-",
+        plotSize: "2000 Sq. Ft.",
         menu: [
             {
-                menuId: 10,
-                name: "Kolo Mee",
-                photo: images.kolo_mee,
-                description: "Noodles with char siu",
+                menuId: 1,
+                name: "Sai Surksha Nagar – Outer Ring Road Behta",
+                photo: images.NagarAmausiStationCode1,
+                description: "Sai Surksha Nagar – Outer Ring Road Behta",
                 calories: 200,
-                price: 5
+                price: "12,000/-"
             },
             {
-                menuId: 11,
-                name: "Sarawak Laksa",
-                photo: images.sarawak_laksa,
-                description: "Vermicelli noodles, cooked prawns",
-                calories: 300,
-                price: 8
+                menuId: 2,
+                name: "Sai Surksha Nagar – Outer Ring Road Behta",
+                photo: images.NagarAmausiStationCode2,
+                description: "Sai Surksha Nagar – Outer Ring Road Behta",
+                calories: 200,
+                price: "12,000/-"
             },
             {
-                menuId: 12,
-                name: "Nasi Lemak",
-                photo: images.nasi_lemak,
-                description: "A traditional Malay rice dish",
-                calories: 300,
-                price: 8
+                menuId: 3,
+                name: "Sai Surksha Nagar – Outer Ring Road Behta",
+                photo: images.NagarAmausiStationCode3,
+                description: "Sai Surksha Nagar – Outer Ring Road Behta",
+                calories: 200,
+                price: "12,000/-"
             },
             {
-                menuId: 13,
-                name: "Nasi Briyani with Mutton",
-                photo: images.nasi_briyani_mutton,
-                description: "A traditional Indian rice dish with mutton",
-                calories: 300,
-                price: 8
+                menuId: 4,
+                name: "Sai Surksha Nagar – Outer Ring Road Behta",
+                photo: images.NagarAmausiStationCode4,
+                description: "Sai Surksha Nagar – Outer Ring Road Behta",
+                calories: 200,
+                price: "12,000/-"
             },
-
         ]
     },
-    {
 
-        id: 6,
-        name: "ByProgrammers Dessets",
-        rating: 4.9,
-        categories: [9, 10],
-        priceRating: affordable,
-        photo: images.kek_lapis_shop,
-        duration: "35 - 40 min",
-        location: {
-            latitude: 1.5573478487252896,
-            longitude: 110.35568783282145,
-        },
-        courier: {
-            avatar: images.avatar_1,
-            name: "Jessie"
-        },
-        menu: [
-            {
-                menuId: 12,
-                name: "Teh C Peng",
-                photo: images.teh_c_peng,
-                description: "Three Layer Teh C Peng",
-                calories: 100,
-                price: 2
-            },
-            {
-                menuId: 13,
-                name: "ABC Ice Kacang",
-                photo: images.ice_kacang,
-                description: "Shaved Ice with red beans",
-                calories: 100,
-                price: 3
-            },
-            {
-                menuId: 14,
-                name: "Kek Lapis",
-                photo: images.kek_lapis,
-                description: "Layer cakes",
-                calories: 300,
-                price: 20
-            }
-        ]
-
-    }
 
 
 ]
 
-export { restaurantData, categoryData, initialCurrentLocation };
+
+const clients = [
+    {
+        id: 1,
+        name: "Abhishek",
+        icon: images.Abhishek,
+        phone: "+91 9936660555"
+    },
+    {
+        id: 2,
+        name: "Akmishra",
+        icon: images.Akmishra,
+        phone: '+91 9919194437'
+    },
+    {
+        id: 3,
+        name: "chandresh",
+        icon: images.chandresh,
+        phone: "+91 9721508850"
+    },
+    {
+        id: 4,
+        name: "Dilip",
+        icon: images.Dilip,
+        phone: "+91 8077621079"
+    },
+    {
+        id: 5,
+        name: "Kiran",
+        icon: images.Kiran,
+        phone: '+91 7888674088'
+    },
+    {
+        id: 6,
+        name: "mahendra",
+        icon: images.mahendra,
+        phone: '+91 9005184983'
+    },
+    {
+        id: 7,
+        name: "Pankaj",
+        icon: images.Pankaj,
+        phone: '+91 8299324894'
+    },
+    {
+        id: 8,
+        name: "prabhat",
+        icon: images.prabhat,
+        phone: '+91 9450611110'
+    },
+    {
+        id: 9,
+        name: "pradeep",
+        icon: images.pradeep,
+        phone: '+91 7080761644'
+    },
+    {
+        id: 10,
+        name: "pravesh",
+        icon: images.pravesh,
+        phone: '+91 7905781488'
+    },
+    {
+        id: 11,
+        name: "Pushpendra",
+        icon: images.Pushpendra,
+        phone: '+91 7355148998'
+    },
+    {
+        id: 12,
+        name: "Ramu",
+        icon: images.Ramu,
+        phone: '+91 9305158653'
+    },
+    {
+        id: 13,
+        name: "ritesh",
+        icon: images.ritesh,
+        phone: '+91 9935119888'
+    },
+    {
+        id: 14,
+        name: "rohith",
+        icon: images.rohith,
+        phone: '+91 9935119888'
+    },
+    {
+        id: 15,
+        name: "Rupak",
+        icon: images.Rupak,
+        phone: '+91 8172852888'
+    },
+    {
+        id: 16,
+        name: "Shailendra",
+        icon: images.Shailendra,
+        phone: '+91 6386707808'
+    },
+    {
+        id: 17,
+        name: "sony",
+        icon: images.sony,
+        phone: "+91 9110294749"
+    },
+    {
+        id: 18,
+        name: "Subodh",
+        icon: images.Subodh,
+        phone: '+91 9919186622'
+    },
+    {
+        id: 19,
+        name: "vipin",
+        icon: images.vipin,
+        phone: "+91 6394266274"
+
+    },
+    {
+        id: 20,
+        name: "vishwajeet",
+        icon: images.vishwajeet,
+        phone: "+91 9026952401"
+    },
+
+]
+
+
+const agents = [
+    {
+        id: 1,
+        name: "Abhishek",
+        icon: icons.user,
+        phone: "+91 9936660555"
+    },
+    {
+        id: 2,
+        name: "Akmishra",
+        icon: icons.user,
+        phone: '+91 9919194437'
+    },
+    {
+        id: 3,
+        name: "chandresh",
+        icon: icons.user,
+        phone: "+91 9721508850"
+    },
+    {
+        id: 4,
+        name: "Dilip",
+        icon: icons.user,
+        phone: "+91 8077621079"
+    },
+]
+
+
+export { restaurantData, categoryData, initialCurrentLocation, clients, agents };

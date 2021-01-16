@@ -28,9 +28,56 @@ const sarawak_laksa = require("../../assets/images/sarawak-laksa.jpg");
 const sushi = require("../../assets/images/sushi.jpg");
 const teh_c_peng = require("../../assets/images/teh-c-peng.jpg");
 const tomato_pasta = require("../../assets/images/tomato-pasta.jpg");
-const bg = require("../../assets/images/bg.png")
+const bg = require("../../assets/images/bg.png");
+
+
+
+const Abhishek = require("../../assets/images/Abhishek.jpg");
+const Akmishra = require("../../assets/images/Akmishra.jpg");
+const chandresh = require("../../assets/images/chandresh.jpg");
+const Dilip = require("../../assets/images/Dilip.jpg");
+const Kiran = require("../../assets/images/Kiran.jpg");
+const mahendra = require("../../assets/images/mahendra.jpg");
+const Pankaj = require("../../assets/images/Pankaj.jpg");
+const prabhat = require("../../assets/images/prabhat.jpg");
+const pradeep = require("../../assets/images/pradeep.jpg");
+const pravesh = require("../../assets/images/pravesh.jpg");
+const Pushpendra = require("../../assets/images/Pushpendra.jpg");
+const Ramu = require("../../assets/images/Ramu.jpg");
+const ritesh = require("../../assets/images/ritesh.jpg");
+const rohith = require("../../assets/images/rohith.jpg");
+const Rupak = require("../../assets/images/Rupak.jpg");
+const Shailendra = require("../../assets/images/Shailendra.jpg");
+const sony = require("../../assets/images/sony.jpg");
+const Subodh = require("../../assets/images/Subodh.jpg");
+const vipin = require("../../assets/images/vipin.jpg");
+const vishwajeet = require("../../assets/images/vishwajeet.jpg");
+
+// const AmausiStationTSMHospital = require('../../assets/images/AmausiStation&TSMHospital.jpg')
+const NagarBasantKhera = require('../../assets/images/NagarBasantKhera.jpg')
+const OuterRingRoadBehta = require('../../assets/images/OuterRingRoadBehta.jpg')
+
+const NagarAmausiStationCode1 = require('../../assets/images/NagarAmausiStationCode1.jpeg')
+const NagarAmausiStationCode2 = require('../../assets/images/NagarAmausiStationCode2.jpeg')
+const NagarAmausiStationCode3 = require('../../assets/images/NagarAmausiStationCode3.jpeg')
+const NagarAmausiStationCode4 = require('../../assets/images/NagarAmausiStationCode4.jpeg')
+
+
+const banner = require('../../assets/images/banner.png')
+const brand = require('../../assets/images/brand.png')
+
+const sayri = require('../../assets/images/sayri.png')
+const footer = require('../../assets/images/footer.png')
 
 export default {
+    Abhishek, Akmishra, chandresh, Dilip, Kiran, mahendra, Pankaj, prabhat, pradeep,
+    pravesh, Pushpendra, Ramu, ritesh, rohith, Rupak, Shailendra, sony, Subodh, vipin, vishwajeet,
+    // AmausiStationTSMHospital,
+    NagarBasantKhera, OuterRingRoadBehta, banner, brand, sayri, footer,
+    NagarAmausiStationCode1,
+    NagarAmausiStationCode2,
+    NagarAmausiStationCode3,
+    NagarAmausiStationCode4,
     avatar_1,
     avatar_2,
     avatar_3,
