@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     View,
     Text,
@@ -9,14 +9,28 @@ import {
     FlatList
 } from "react-native";
 import { COLORS, icons, images, SIZES, FONTS } from "../constants";
+import { DrawerActions } from '@react-navigation/native';
 
-
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Header = ({ title, isHomeScreen, navigation }) => {
+
+    const getData = async () => {
+        try {
+            const value = await AsyncStorage.getItem('@credentials')
+            if (value == null) {
+                navigation.navigate('LogIn2')
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
     return (
-        <View style={{ flexDirection: 'row', height: 50, backgroundColor: COLORS.primary }}>
+        <View style={{ flexDirection: 'row', height: 50, backgroundColor: COLORS.blue }}>
             <TouchableOpacity style={{
                 width: 50,
                 paddingLeft: SIZES.padding * 2,
@@ -56,6 +70,9 @@ const Header = ({ title, isHomeScreen, navigation }) => {
                     width: 50,
                     paddingRight: SIZES.padding * 2,
                     justifyContent: 'center'
+                }}
+                onPress={() => {
+                    navigation.dispatch(DrawerActions.toggleDrawer());
                 }}
             >
                 <Image

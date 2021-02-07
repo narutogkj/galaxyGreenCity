@@ -10,7 +10,8 @@ import {
     TouchableOpacity,
     FlatList,
     Modal,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    ImageBackground,
 } from "react-native";
 import { COLORS, icons, images, SIZES, FONTS } from "../constants";
 import Animated, { Clock, clockRunning, Easing, startClock, stopClock, timing, debug, interpolate, Extrapolate, concat, color } from 'react-native-reanimated';
@@ -19,6 +20,7 @@ import { clients } from '../Data';
 const { width, height } = Dimensions.get('window')
 const { Value, event, block, cond, eq, set } = Animated;
 import { Header, Footer } from '../widgets';
+import axios from 'axios';
 
 function runTiming(clock, value, dest) {
     const state = {
@@ -59,9 +61,43 @@ function runTiming(clock, value, dest) {
 class Inquiry extends React.Component {
 
     state = {
+        userName: '',
+        emailId: '',
+        phoneNo: '',
         seletedClient: null,
-        modalVisible: false
+        modalVisible: false,
+        submitButton: 'Submit'
     }
+    submitInquiry = (props) => {
+        this.setState({ submitButton: 'Uploading...' })
+        const data = {
+            service_id: 'service_4k18ajc',
+            template_id: 'template_0y359ss',
+            user_id: 'user_0cclqHlI2Jk5b7IL1i7k6',
+            template_params: {
+                'clientName': this.state.seletedClient.name,
+                'clientId': this.state.seletedClient.clientId,
+                'emailId': this.state.emailId,
+                'phoneNo': this.state.phoneNo,
+                'userName': this.state.userName,
+                'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...'
+            }
+        };
+
+        axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
+            .then(function (response) {
+                props.navigation.navigate('drawer', {
+                    screen: "Location of Plots", params: {
+                        inquiry: true
+                    }
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+
     renderClient = ({ item }) => {
         return (
             <TouchableOpacity
@@ -87,6 +123,10 @@ class Inquiry extends React.Component {
                     }}
                 />
                 <Text style={{ ...FONTS.body4 }}>{item.name}</Text>
+                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
+                    <Text style={{ ...FONTS.body4 }}>{item.clientId}</Text>
+                </View>
+
             </TouchableOpacity>
         )
     }
@@ -134,38 +174,46 @@ class Inquiry extends React.Component {
     render() {
         return (
 
-            <View style={{
-                ...StyleSheet.absoluteFill,
-                marginTop: 24
-
+            <ImageBackground source={images.bg} style={{
+                ...styles.container,
+                flex: 1,
             }}>
-                <Header title="Inquiry" />
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
-                    <Image style={{ width: "64%", height: 140, marginBottom: 10 }} source={images.brand} />
+                <View style={{ marginTop: 20 }}>
+                    <Header title="Inquiry" navigation={this.props.navigation} />
                 </View>
-                <View style={styles.container}>
+                <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
+                    <View style={{ width: "55%", height: 120 }}>
+                        <Image style={{ width: "98%", height: '100%', marginBottom: 10 }} source={images.brand} />
+                    </View>
+                </View>
+                <View>
                     <TextInput
                         mode='outlined'
                         label="Your Name"
                         style={{ ...styles.textInput }}
+                        onChangeText={(text) => { this.setState({ userName: text }) }}
+                        value={this.state.userName}
                     />
                     <TextInput
                         mode='outlined'
                         label="Email Id"
                         style={{ ...styles.textInput }}
-
+                        onChangeText={(text) => { this.setState({ emailId: text }) }}
+                        value={this.state.emailId}
                     />
                     <TextInput
                         mode='outlined'
                         label="Phone No."
                         style={{ ...styles.textInput }}
+                        onChangeText={(text) => { this.setState({ phoneNo: text }) }}
+                        value={this.state.phoneNo}
                     />
                     <TouchableOpacity
                         onPress={() => this.setState({ modalVisible: true })}
                     >
-                        <View style={{ ...styles.textInput, borderWidth: 0.5, borderRadius: 5, marginLeft: 30, marginTop: 15 }}>
+                        <View style={{ ...styles.textInput, borderWidth: 0.5, borderRadius: 3, marginLeft: 50, marginTop: 15 }}>
                             <Text style={{
-                                marginVertical: 10,
+                                marginVertical: 7,
                                 color: "rgba(0,0,0,0.6)",
                                 fontSize: 16
                             }}>
@@ -173,9 +221,22 @@ class Inquiry extends React.Component {
                             </Text>
                         </View>
                     </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.setState({ modalVisible: true })}
+                    >
+                        <View style={{ ...styles.textInput, borderWidth: 0.5, borderRadius: 3, marginLeft: 50, marginTop: 15 }}>
+                            <Text style={{
+                                marginVertical: 7,
+                                color: "rgba(0,0,0,0.6)",
+                                fontSize: 16
+                            }}>
+                                {(this.state.seletedClient) ? this.state.seletedClient.clientId : "Client Id"}
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate("Tabs")}
+                        onPress={() => this.submitInquiry(this.props)}
                     >
                         <View style={{
                             ...styles.button,
@@ -189,7 +250,7 @@ class Inquiry extends React.Component {
                                 color: COLORS.blue,
                             }}
                             >
-                                Submit
+                                {this.state.submitButton}
                             </Text>
                         </View>
                     </TouchableOpacity>
@@ -198,7 +259,7 @@ class Inquiry extends React.Component {
 
                 {this.renderClientsListModal()}
                 <Footer />
-            </View>
+            </ImageBackground>
 
 
 
@@ -216,9 +277,9 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: 'white',
-        height: 50,
-        marginHorizontal: 65,
-        borderRadius: 15,
+        height: 40,
+        marginHorizontal: 100,
+        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: 15,
@@ -241,8 +302,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2
     },
     textInput: {
-        height: 50,
-        marginHorizontal: 20,
+        height: 35,
+        marginHorizontal: 40,
         paddingLeft: 10,
         marginVertical: 5,
         // borderColor: "rgba(0,0,0,0.2)"

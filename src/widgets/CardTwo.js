@@ -1,14 +1,12 @@
 import React from 'react';
 import { View, Text, SafeAreaView, Image } from 'react-native';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native';
 import { COLORS, FONTS, images, SIZES } from '../constants';
-import Footer from './Footer'
 
 
 
 
-
-const CardTwo = ({ clients }) => {
+const CardTwo = ({ clients, navigation }) => {
     const renderItem = ({ item }) => {
         return (
             <View>
@@ -17,14 +15,14 @@ const CardTwo = ({ clients }) => {
                         marginVertical: SIZES.base,
                         width: SIZES.width / 2.5
                     }}
-                // onPress={() => console.log(item)}
+                    onPress={() => navigation.navigate('drawer', { screen: 'Location of Plots' })}
                 >
                     <View
                         style={{
-                            height: 100,
+                            height: 140,
                             borderTopLeftRadius: 20,
                             borderTopRightRadius: 20,
-                            backgroundColor: COLORS.primary
+                            backgroundColor: COLORS.primary,
                         }}
                     >
                         <Image
@@ -41,13 +39,15 @@ const CardTwo = ({ clients }) => {
                     <View
                         style={{
                             padding: SIZES.padding,
-                            backgroundColor: COLORS.white,
+                            backgroundColor: COLORS.lightGray4,
                             borderBottomLeftRadius: 20,
                             borderBottomRightRadius: 20
                         }}
                     >
                         <Text style={{ ...FONTS.h4 }}>{item.name}</Text>
-                        <Text style={{ ...FONTS.body4 }}>{item.phone}</Text>
+                        <Text style={{ ...FONTS.body5 }}>{item.clientId}</Text>
+                        <Text style={{ ...FONTS.body5 }}>{item.des}</Text>
+                        <Text style={{ ...FONTS.body5 }}>{item.phone}</Text>
 
                     </View>
 
@@ -71,7 +71,7 @@ const CardTwo = ({ clients }) => {
                 showsVerticalScrollIndicator={false}
                 renderItem={renderItem}
             />
-            <Footer />
+
         </SafeAreaView>
     )
 }

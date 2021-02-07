@@ -1,24 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
     StyleSheet,
-    SafeAreaView,
     View,
-    Image
+    ImageBackground,
+    ScrollView
 } from "react-native";
-import { COLORS, icons, images, SIZES, FONTS } from "../constants";
-import { Header, CardOne, Footer } from '../widgets';
+import { COLORS, images } from "../constants";
+import { Header, CardOne, Footer, Fab } from '../widgets';
 
-import { restaurantData, categoryData, initialCurrentLocation } from '../Data';
+import { Button, Snackbar } from 'react-native-paper';
+import { restaurantData } from '../Data';
 
+const HomeScreen = ({ navigation, route }) => {
 
-const HomeScreen = ({ navigation }) => {
+    const [visible, setVisible] = useState(false);
+    const onDismissSnackBar = () => setVisible(false);
+
+    useEffect(() => {
+        if (route.params) {
+            if (route.params.register) {
+                setVisible(true)
+            }
+            if (route.params.inquiry) {
+                setVisible(true)
+            }
+
+        }
+
+    }, [route.params])
+
     return (
-        <SafeAreaView style={styles.container}>
-            <Header title="Galaxy Green City" isHomeScreen />
+        <ImageBackground source={images.bg} style={styles.container}>
+            <View style={{ marginTop: 20 }}>
+                <Header title="Galaxy Green City" isHomeScreen navigation={navigation} />
+                <ScrollView>
+                    <CardOne restaurantData={restaurantData} navigation={navigation} />
+                    <Footer />
+                    <View style={{ marginVertical: 20 }}></View>
+                </ScrollView>
+            </View>
+            <Snackbar
+                visible={visible}
+                onDismiss={onDismissSnackBar}
+                duration={3000}
+                style={{
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    alignContent: 'center',
+                }}
+            >
+                Register Successfully.
+            </Snackbar>
 
-            <CardOne restaurantData={restaurantData} navigation={navigation} />
-            <Footer />
-        </SafeAreaView>
+            <Fab navigation={navigation} />
+        </ImageBackground>
     );
 };
 
@@ -26,8 +60,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: COLORS.lightGray4,
-        marginTop: 20,
-        marginBottom: 100
     },
     shadow: {
         shadowColor: '#000',

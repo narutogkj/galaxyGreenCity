@@ -16,9 +16,7 @@ const CardOne = ({ restaurantData, navigation }) => {
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={{ marginBottom: SIZES.padding * 2 }}
-            onPress={() => navigation.navigate("Restaurant", {
-                item
-            })}
+            onPress={() => navigation.navigate(item.url)}
         >
             <View
                 style={{
@@ -30,19 +28,31 @@ const CardOne = ({ restaurantData, navigation }) => {
                     resizeMode="cover"
                     style={{
                         width: "100%",
-                        height: 200,
+                        height: 150,
                         borderRadius: SIZES.radius,
                         borderColor: '#2e71dc',
-                        borderWidth: 2
+                        borderWidth: 1
                     }}
                 />
+                <View
+                    style={{
+                        position: 'absolute',
+                        left: SIZES.width * 0.7,
+                        height: 40,
+                        width: SIZES.width * 0.2,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Image source={icons.emi} style={{ width: '100%', height: '100%' }} />
+                </View>
 
                 <View
                     style={{
                         position: 'absolute',
                         bottom: 0,
-                        height: 50,
-                        width: SIZES.width * 0.3,
+                        height: 30,
+                        width: SIZES.width * 0.35,
                         backgroundColor: COLORS.white,
                         borderColor: '#2e71dc',
                         borderWidth: 1,
@@ -53,10 +63,10 @@ const CardOne = ({ restaurantData, navigation }) => {
                         ...styles.shadow
                     }}
                 >
-                    <Text style={{ ...SIZES.h4 }}>₹ {item.duration}</Text>
+                    <Text style={{ ...SIZES.h5 }}>₹ {item.duration}</Text>
                 </View>
             </View>
-            <Text style={{ ...FONTS.body2 }}>{item.name}</Text>
+            <Text style={{ ...FONTS.body3 }}>{item.name}</Text>
 
             <View
                 style={{
@@ -64,7 +74,7 @@ const CardOne = ({ restaurantData, navigation }) => {
                     flexDirection: 'row'
                 }}
             >
-                <Image
+                {/* <Image
                     source={icons.star}
                     style={{
                         height: 20,
@@ -72,8 +82,10 @@ const CardOne = ({ restaurantData, navigation }) => {
                         tintColor: COLORS.primary,
                         marginRight: 10
                     }}
-                />
-                <Text style={{ ...SIZES.body3 }}>{item.rating}</Text>
+                /> */}
+                <Text style={{ ...SIZES.body3 }}>Ploat size available </Text>
+                <Text style={{ ...SIZES.body3 }}>{item.plotSize}</Text>
+
                 <View
                     style={{
                         flexDirection: 'row',
@@ -81,14 +93,14 @@ const CardOne = ({ restaurantData, navigation }) => {
                     }}
                 >
 
-                    <View
-                        style={{ flexDirection: 'row' }}
 
-                    >
-                        <Text style={{ ...SIZES.body3 }}>{item.plotSize}</Text>
-                        <Text style={{ ...SIZES.h3, color: COLORS.darkgray }}> . </Text>
-                    </View>
                 </View>
+
+
+            </View>
+            <View
+            >
+                <Text>(Residence and Commercial)</Text>
             </View>
         </TouchableOpacity>
     )
@@ -104,7 +116,6 @@ const CardOne = ({ restaurantData, navigation }) => {
                 renderItem={renderItem}
                 contentContainerStyle={{
                     paddingHorizontal: SIZES.padding * 2,
-                    paddingBottom: 50
                 }}
             />
         </View>

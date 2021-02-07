@@ -1,26 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Tabs from "./src/navigation/Tabs";
-import Restaurant from './src/screens/Restaurant';
-import LogIn from './src/screens/LogIn';
+import { createStackNavigator } from "@react-navigation/stack";
+import stacks from './src/navigation/stacks'
+import drawer from './src/navigation/drawer';
 import LogIn2 from './src/screens/LogIn2';
-import Inquiry from './src/screens/Inquiry';
-import Agent from './src/screens/Agent';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 
+
 function App() {
+  const [isLogged, setLogin] = useState(false);
+
+  const getData = async () => {
+    try {
+      return await AsyncStorage.getItem('@credentials')
+    } catch (e) {
+      alert(e);
+    }
+  }
+
+  useEffect(() => {
+
+    getData().then((value) => {
+      if (value) {
+        setLogin(true)
+      }
+    })
+  }, [])
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LogIn2" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LogIn2" component={LogIn2} />
-        <Stack.Screen name="Tabs" component={Tabs} />
-        <Stack.Screen name="Restaurant" component={Restaurant} />
-        <Stack.Screen name="LogIn" component={LogIn} />
-        <Stack.Screen name="Inquiry" component={Inquiry} />
-        <Stack.Screen name="Agent" component={Agent} />
+        <Stack.Screen name="drawer" component={drawer} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

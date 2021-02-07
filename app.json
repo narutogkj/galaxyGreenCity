@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "reactProject",
+    "name": "Galaxy Green City",
     "slug": "reactProject",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -17,14 +17,27 @@
       "**/*"
     ],
     "android": {
+      "splash": {
+        "ldpi": "./assets/splash_ldpi_200x320.png",
+        "mdpi": "./assets/splash_mdpi_320x480.png",
+        "hdpi": "./assets/splash_HDPI_480x800.png",
+        "xhdpi": "./assets/splash_XHDPI_480x800.png",
+        "xxhdpi": "./assets/splash_XXHDPI_480x800.png",
+        "xxxhdpi": "./assets/splash_XXXHDPI_480x800.png",
+        "resizeMode": "cover"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.gkj498.reactProject"
+      "package": "com.gkj498.reactProject",
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "ios": {
+      "bundleIdentifier": "com.gkj498.reactProject"
     }
   }
 }
