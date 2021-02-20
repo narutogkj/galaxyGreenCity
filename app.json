@@ -37,7 +37,8 @@
       "favicon": "./assets/favicon.png"
     },
     "ios": {
-      "bundleIdentifier": "com.gkj498.reactProject"
+      "bundleIdentifier": "com.gkj498.reactProject",
+      "buildNumber": "1.0.0"
     }
   }
 }
