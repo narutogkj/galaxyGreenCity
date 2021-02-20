@@ -213,7 +213,6 @@ const restaurantData = [
         menu: [
             {
                 menuId: 1,
-
                 name: "Sai Surksha Nagar – Outer Ring Road Behta ",
                 photo: images.OuterRingRoadBehta,
                 description: "Sai Surksha Nagar – Outer Ring Road Behta",

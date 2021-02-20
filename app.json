@@ -37,6 +37,10 @@
       "favicon": "./assets/favicon.png"
     },
     "ios": {
+      "splash": {
+        "image": "./assets/splash_ios.png",
+        "resizeMode": "cover"
+      },
       "bundleIdentifier": "com.gkj498.reactProject",
       "buildNumber": "1.0.0"
     }
