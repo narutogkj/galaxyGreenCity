@@ -125,47 +125,48 @@ class LogIn2 extends Component {
         }
     }
     storingCreads = (props) => {
-        this.setState({ registerButton: 'Wait...' })
-        const data = {
-            service_id: 'service_4k18ajc',
-            template_id: 'template_0y359ss',
-            user_id: 'user_0cclqHlI2Jk5b7IL1i7k6',
-            template_params: {
-                'clientName': this.state.seletedClient.name,
-                'clientId': this.state.seletedClient.clientId,
-                'emailId': this.state.emailId,
-                'phoneNo': this.state.phoneNo,
-                'userName': this.state.userName,
-                'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...'
-            }
-        };
-
-        axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
-            .then(function (response) {
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-
-
-        const cread = {
-            clientName: this.state.seletedClient.name,
-            clientId: this.state.seletedClient.clientId,
-            emailId: this.state.emailId,
-            phoneNo: this.state.phoneNo,
-            userName: this.state.userName
-        }
-        this.storeData(cread);
-        if (cread.clientName == '' ||
-            cread.clientId == '' ||
-            cread.emailId == '' ||
-            cread.phoneNo == '' ||
-            cread.userName == ''
+        if (this.state.seletedClient == null ||
+            this.state.emailId == '' ||
+            this.state.phoneNo == '' ||
+            this.state.userName == ''
         ) {
+            console.log(this.state.seletedClient, this.state.emailId, this.state.phoneNo, this.state.userName)
             alert("Fields cannot be empty")
         } else {
+            this.setState({ registerButton: 'Wait...' })
+            const data = {
+                service_id: 'service_4k18ajc',
+                template_id: 'template_0y359ss',
+                user_id: 'user_0cclqHlI2Jk5b7IL1i7k6',
+                template_params: {
+                    'clientName': this.state.seletedClient.name,
+                    'clientId': this.state.seletedClient.clientId,
+                    'emailId': this.state.emailId,
+                    'phoneNo': this.state.phoneNo,
+                    'userName': this.state.userName,
+                    'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...'
+                }
+            };
+
+            axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
+                .then(function (response) {
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+
+
+            const cread = {
+                clientName: this.state.seletedClient.name,
+                clientId: this.state.seletedClient.clientId,
+                emailId: this.state.emailId,
+                phoneNo: this.state.phoneNo,
+                userName: this.state.userName
+            }
+            this.storeData(cread);
+
             props.navigation.replace('drawer')
         }
 
