@@ -2,7 +2,7 @@
   "expo": {
     "name": "Galaxy Green City",
     "slug": "reactProject",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -42,7 +42,7 @@
         "resizeMode": "cover"
       },
       "bundleIdentifier": "com.gkj498.reactProject",
-      "buildNumber": "1.0.0"
+      "buildNumber": "2.0.0"
     }
   }
 }
